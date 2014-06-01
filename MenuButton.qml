@@ -20,13 +20,18 @@ Rectangle {
     }
 
     gradient: Gradient {
+        id: menuButtonGradient
         GradientStop {
+            id: gradientStop1
             position: 0.0
             color: root.focus ? colorFocusUp : "lightgray"
         }
         GradientStop {
+            id: gradientStop2
             position: 1.0
             color: root.focus ? colorFocusDown: "gray"
         }
     }
+
+
 }

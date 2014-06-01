@@ -6,17 +6,67 @@ Item {
     width: 640
     height: 480
 
+    Keys.onPressed: {
+        if(event.key == Qt.Key_Escape)
+            Qt.quit()
+        if(alfabeto.focus)
+        {
+            root.state = "MenuAlfabeto"
+        }
+        else if(palavras.focus)
+        {
+            root.state = "MenuPalavras"
+        }
+    }
+
+    states: [
+        State {
+            name: "MenuPrincipal"
+            PropertyChanges {
+                target: menuGradientStop1
+                color: "green"
+            }
+        },
+        State {
+            name: "MenuPalavras"
+            PropertyChanges {
+                target: menuGradientStop1
+                color: "red"
+            }
+        },
+        State {
+            name: "MenuAlfabeto"
+            PropertyChanges {
+                target: menuGradientStop1
+                color: "blue"
+            }
+        }
+    ]
+
+    transitions: [
+        Transition {
+            to: "*"
+            ColorAnimation {
+                target: menuGradientStop1
+                duration: 1000
+            }
+        }
+    ]
+
     Rectangle {
         id: page
         width: parent.width
         height: parent.height
 
         gradient: Gradient {
+            id: menuGradient
             GradientStop {
+                id: menuGradientStop1
                 position: 0.0
                 color: "green"
             }
             GradientStop {
+                id: menuGradientStop2
                 position: 1.0
                 color: "white"
             }
@@ -65,7 +115,6 @@ Item {
                 radius: 100
                 colorFocusUp: "skyblue"
                 colorFocusDown: "blue"
-
             }
 
             MenuButton {
