@@ -6,19 +6,6 @@ Item {
     width: 640
     height: 480
 
-    Keys.onPressed: {
-        if(event.key == Qt.Key_Escape)
-            Qt.quit()
-        if(alfabeto.focus)
-        {
-            root.state = "MenuAlfabeto"
-        }
-        else if(palavras.focus)
-        {
-            root.state = "MenuPalavras"
-        }
-    }
-
     states: [
         State {
             name: "MenuPrincipal"
@@ -33,6 +20,10 @@ Item {
                 target: menuGradientStop1
                 color: "red"
             }
+            PropertyChanges {
+                target: mainMenuColumn
+                visible: false
+            }
         },
         State {
             name: "MenuAlfabeto"
@@ -40,18 +31,34 @@ Item {
                 target: menuGradientStop1
                 color: "blue"
             }
+            PropertyChanges {
+                target: titleText
+                text: "Alfabeto"
+            }
+            PropertyChanges {
+                target: mainMenu
+                visible: false
+            }
+            PropertyChanges {
+                target: alphabetMenu
+                visible: true
+            }
         }
     ]
 
     transitions: [
         Transition {
             to: "*"
-            ColorAnimation {
-                target: menuGradientStop1
-                duration: 1000
+            ParallelAnimation {
+                ColorAnimation {
+                    target: menuGradientStop1
+                    duration: 1000
+                }
             }
         }
     ]
+
+
 
     Rectangle {
         id: page
@@ -72,66 +79,29 @@ Item {
             }
         }
 
-        Timer {
-            id: sweepingTime
-            interval: 1000
-            running: true
-            repeat: true
-            onTriggered: {
-                if(alfabeto.focus)
-                {
-                    alfabeto.focus = false;
-                    palavras.focus = true;
-                }
-                else
-                {
-                    alfabeto.focus = true;
-                    palavras.focus = false;
-                }
-            }
+        TitleText {
+            id: titleText
         }
 
-        Text {
-            id: textAprendendoPortugues
-            anchors.horizontalCenter: parent.horizontalCenter
-            y: parent.y + 20
-            text: "Aprendendo Português"
-            font.pointSize: 24
-        }
-
-        Column {
+        Rectangle {
+            id: menuContent
             anchors.centerIn: parent
-            spacing: 20
+            width: parent.width
+            height: parent.height - 30
+            color: "transparent"
 
-            MenuButton {
-                id: alfabeto
-                width: page.width / 2
-                height: page.height / 4
-                focus: true
-                borderWidth: 5
-                borderColor: "black"
-                text: "Alfabeto"
-                fontSize: 24
-                radius: 100
-                colorFocusUp: "skyblue"
-                colorFocusDown: "blue"
+            MainMenuColumn {
+                id: mainMenu
+                anchors.centerIn: parent
             }
 
-            MenuButton {
-                id: palavras
-                width: page.width / 2
-                height: page.height / 4
-                radius: 100
-                focus: false
-                borderWidth: 5
-                borderColor: "black"
-                text: "palavras"
-                fontSize: 24
-                colorFocusUp: "pink"
-                colorFocusDown: "red"
+            AlphabetColumn {
+                id: alphabetMenu
+                anchors.centerIn: parent
             }
-
-
         }
+
     }
+
+
 }
