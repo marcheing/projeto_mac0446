@@ -27,13 +27,28 @@ Item {
                 target: alphabetMenu
                 visible: true
             }
+            PropertyChanges {
+                target: vogaisScreen
+                visible: false
+            }
         },
         State {
             name: "AlfabetoVogais"
             PropertyChanges {
                 target: titleText
-                text: "Alfabeto\nVogais"
-
+                text: "Alfabeto ~ Vogais"
+            }
+            PropertyChanges {
+                target: mainMenu
+                visible: false
+            }
+            PropertyChanges {
+                target: alphabetMenu
+                visible: false
+            }
+            PropertyChanges {
+                target: vogaisScreen
+                visible: true
             }
         },
         State {

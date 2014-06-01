@@ -16,7 +16,7 @@ Column {
             }
             else if(vogais.focus)
             {
-                root.state = "MenuPalavras"
+                root.state = "AlfabetoVogais"
             }
             else
             {
