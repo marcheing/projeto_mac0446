@@ -13,12 +13,13 @@ Column {
             if(alfabeto.focus)
             {
                 root.state = "MenuAlfabeto"
+                sweepingTime.interval = 1
             }
             else if(palavras.focus)
             {
-                root.state = "MenuPalavras"
+                root.state = "MenuPrincipal"
             }
-            sweepingTime.interval = 1
+
         }
     }
 

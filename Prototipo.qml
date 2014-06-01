@@ -9,28 +9,12 @@ Item {
     states: [
         State {
             name: "MenuPrincipal"
-            PropertyChanges {
-                target: menuGradientStop1
-                color: "green"
-            }
         },
         State {
             name: "MenuPalavras"
-            PropertyChanges {
-                target: menuGradientStop1
-                color: "red"
-            }
-            PropertyChanges {
-                target: mainMenuColumn
-                visible: false
-            }
         },
         State {
             name: "MenuAlfabeto"
-            PropertyChanges {
-                target: menuGradientStop1
-                color: "blue"
-            }
             PropertyChanges {
                 target: titleText
                 text: "Alfabeto"
@@ -43,42 +27,30 @@ Item {
                 target: alphabetMenu
                 visible: true
             }
-        }
-    ]
+        },
+        State {
+            name: "AlfabetoVogais"
+            PropertyChanges {
+                target: titleText
+                text: "Alfabeto\nVogais"
 
-    transitions: [
-        Transition {
-            to: "*"
-            ParallelAnimation {
-                ColorAnimation {
-                    target: menuGradientStop1
-                    duration: 1000
-                }
             }
+        },
+        State {
+             name: "AlfabetoConsoantes"
+             PropertyChanges {
+                 target: titleText
+                 text: "Alfabeto\nConsoantes"
+             }
         }
+
     ]
-
-
 
     Rectangle {
         id: page
         width: parent.width
         height: parent.height
-
-        gradient: Gradient {
-            id: menuGradient
-            GradientStop {
-                id: menuGradientStop1
-                position: 0.0
-                color: "green"
-            }
-            GradientStop {
-                id: menuGradientStop2
-                position: 1.0
-                color: "white"
-            }
-        }
-
+        color: "#4e555b"
         TitleText {
             id: titleText
         }
@@ -97,6 +69,11 @@ Item {
 
             AlphabetColumn {
                 id: alphabetMenu
+                anchors.centerIn: parent
+            }
+
+            VogaisScreen {
+                id: vogaisScreen
                 anchors.centerIn: parent
             }
         }
