@@ -11,6 +11,7 @@ Rectangle {
 
     border.width: borderWidth
     border.color: borderColor
+    width: rectText.paintedWidth + 20
 
     Text {
         id: rectText

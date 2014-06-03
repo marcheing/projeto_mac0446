@@ -5,6 +5,7 @@ Item {
     id: root
     width: 640
     height: 480
+    state: "MenuPrincipal"
 
     states: [
         State {
