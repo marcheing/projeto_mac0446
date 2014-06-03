@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import "Logic.js" as Logic
 
 Column {
     id: mainMenuColumn
@@ -6,10 +7,12 @@ Column {
     visible: true
 
     Keys.onPressed: {
-        if(mainMenuColumn.visible)
+        if(event.key === Qt.Key_Escape)
+            Qt.quit()
+        Logic.manage_speed(event, sweepingTime);
+        if(mainMenuColumn.visible && event.key === Qt.Key_Return)
         {
-            if(event.key === Qt.Key_Escape)
-                Qt.quit()
+            Logic.manage_speed(event, sweepingTime);
             if(alfabeto.focus)
             {
                 root.state = "MenuAlfabeto"
@@ -19,8 +22,8 @@ Column {
             {
                 root.state = "MenuPrincipal"
             }
-
         }
+        sweepingTime.interval = root.menuSpeed;
     }
 
     MenuButton {
@@ -68,7 +71,7 @@ Column {
             else
             {
                 alfabeto.focus = true;
-                sweepingTime.interval = 1000;
+                sweepingTime.interval = root.menuSpeed;
             }
         }
     }

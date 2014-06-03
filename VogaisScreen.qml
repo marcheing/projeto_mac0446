@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
+import "Logic.js" as Logic
 
 Rectangle {
     id: rootVogais
@@ -13,7 +14,8 @@ Rectangle {
     Keys.onPressed: {
         if(event.key === Qt.Key_Escape)
             Qt.quit()
-        if(row.visible)
+        Logic.manage_speed(event, sweepingTime3);
+        if(row.visible && event.key === Qt.Key_Return)
         {
             var soundMap = {}
             soundMap['A'] = soundA
@@ -52,11 +54,12 @@ Rectangle {
                     rootVogais.state = "vogaisO"
             }
         }
-        else if (vogaisFimColumn.visible)
+        else if (vogaisFimColumn.visible  && event.key === Qt.Key_Return)
         {
             root.state = "MenuAlfabeto"
             rootVogais.state = "vogaisA"
         }
+        sweepingTime3.interval = root.menuSpeed;
     }
 
     SoundEffect {
@@ -92,12 +95,20 @@ Rectangle {
                 target: vogal
                 text: "A"
             }
+            PropertyChanges {
+                target: vogalImagem
+                source: "images/abacaxi.png"
+            }
         },
         State {
             name: "vogaisE"
             PropertyChanges {
                 target: vogal
                 text: "E"
+            }
+            PropertyChanges {
+                target: vogalImagem
+                source: "images/elefante.png"
             }
         },
         State {
@@ -106,6 +117,10 @@ Rectangle {
                 target: vogal
                 text: "I"
             }
+            PropertyChanges {
+                target: vogalImagem
+                source: "images/igreja.png"
+            }
         },
         State {
             name: "vogaisO"
@@ -113,12 +128,20 @@ Rectangle {
                 target: vogal
                 text: "O"
             }
+            PropertyChanges {
+                target: vogalImagem
+                source: "images/oculos.png"
+            }
         },
         State {
             name: "vogaisU"
             PropertyChanges {
                 target: vogal
                 text: "U"
+            }
+            PropertyChanges {
+                target: vogalImagem
+                source: "images/uva.png"
             }
         },
         State {
@@ -137,14 +160,15 @@ Rectangle {
     Column {
         id: vogaisFimColumn
         visible: false
-        spacing: 30
+        spacing: 40
         anchors.centerIn: parent
 
         Text {
             id: vogaisFimTextoPrincipal
             text: "Fim\ndas\nVogais"
             verticalAlignment: Text.AlignVCenter
-            font.pointSize: 64
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: 56
         }
 
         MenuButton {
@@ -171,51 +195,24 @@ Rectangle {
             y: parent.y
             spacing: 20
 
-            Rectangle {
-                id: image
-                color: "gold"
-                width: 200
+            BorderImage {
+                id: vogalImagem
+                width: 250
                 height: 200
-                Text {
-                    text: "Placeholder para imagem"
-                }
+                horizontalTileMode: BorderImage.Stretch
+                verticalTileMode: BorderImage.Stretch
             }
 
             Text {
                 id: vogal
                 font.pointSize: 96
-                x: image.x + image.width / 2 - width / 2
+                x: vogalImagem.x + vogalImagem.width / 2 - width / 2
             }
 
         }
 
 
         Column {
-
-            states: [
-                State {
-                    name: "first"
-                    PropertyChanges {
-                        target: object
-
-                    }
-                },
-                State {
-                    name: "mid"
-                    PropertyChanges {
-                        target: object
-
-                    }
-                },
-                State {
-                    name: "last"
-                    PropertyChanges {
-                        target: object
-
-                    }
-                }
-            ]
-
             id: buttonsColumn
             y: parent.y
             spacing: 20
@@ -240,6 +237,7 @@ Rectangle {
                 fontSize: 24
                 colorFocusUp: "pink"
                 colorFocusDown: "red"
+                image: "images/avançar.png"
             }
 
             MenuButton {
@@ -284,7 +282,7 @@ Rectangle {
             else
             {
                 soundButton.focus = true;
-                sweepingTime3.interval = 1000
+                sweepingTime3.interval = root.menuSpeed
             }
         }
     }

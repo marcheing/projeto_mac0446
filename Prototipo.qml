@@ -6,6 +6,7 @@ Item {
     width: 640
     height: 480
     state: "MenuPrincipal"
+    property int menuSpeed: 1000;
 
     states: [
         State {
