@@ -154,6 +154,10 @@ Rectangle {
                 target: vogaisFimColumn
                 visible: true
             }
+            PropertyChanges {
+                target: backToMenuButton
+                focus: true
+            }
         }
     ]
 
@@ -173,7 +177,6 @@ Rectangle {
 
         MenuButton {
             id: backToMenuButton
-            focus: true
             height: 80
             radius: 100
             borderWidth: 5

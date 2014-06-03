@@ -65,19 +65,6 @@ Column {
         imageOutOfFocus: "images/voltar_sem_foco.png"
     }
 
-//    MenuButton {
-//        id: voltar
-//        width: page.width / 2
-//        height: page.height / 5
-//        radius: 100
-//        borderWidth: 5
-//        borderColor: "black"
-//        text: "Voltar"
-//        fontSize: 24
-//        colorFocusUp: "lightgreen"
-//        colorFocusDown: "green"
-//    }
-
     Timer {
         id: sweepingTime2
         running: alfabetoColumn.visible
