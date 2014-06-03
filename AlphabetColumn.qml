@@ -25,6 +25,7 @@ Column {
                 root.state = "MenuPrincipal"
             }
             sweepingTime2.interval = 1
+            sweepingTime2.restart
         }
         sweepingTime2.interval = root.menuSpeed;
     }
@@ -35,7 +36,7 @@ Column {
         height: page.height / 5
         borderWidth: 5
         borderColor: "black"
-        text: "Consoantes"
+        text: "Consoantes\nB - C - K - T - Z"
         fontSize: 24
         radius: 100
         colorFocusUp: "skyblue"
@@ -49,24 +50,33 @@ Column {
         radius: 100
         borderWidth: 5
         borderColor: "black"
-        text: "Vogais"
+        text: "Vogais\nA - E - I - O - U"
         fontSize: 24
         colorFocusUp: "pink"
         colorFocusDown: "red"
     }
 
-    MenuButton {
+    ImageButton {
         id: voltar
         width: page.width / 2
         height: page.height / 5
-        radius: 100
-        borderWidth: 5
-        borderColor: "black"
-        text: "Voltar"
-        fontSize: 24
-        colorFocusUp: "lightgreen"
-        colorFocusDown: "green"
+
+        imageOnFocus: "images/voltar_foco.png"
+        imageOutOfFocus: "images/voltar_sem_foco.png"
     }
+
+//    MenuButton {
+//        id: voltar
+//        width: page.width / 2
+//        height: page.height / 5
+//        radius: 100
+//        borderWidth: 5
+//        borderColor: "black"
+//        text: "Voltar"
+//        fontSize: 24
+//        colorFocusUp: "lightgreen"
+//        colorFocusDown: "green"
+//    }
 
     Timer {
         id: sweepingTime2
@@ -76,21 +86,15 @@ Column {
         onTriggered: {
             if(consoantes.focus)
             {
-                consoantes.focus = false;
                 vogais.focus = true;
-                voltar.focus = false;
             }
             else if (vogais.focus)
             {
-                consoantes.focus = false;
-                vogais.focus = false;
                 voltar.focus = true;
             }
             else if (voltar.focus)
             {
                 consoantes.focus = true;
-                vogais.focus = false;
-                voltar.focus = false;
             }
             else {
                 consoantes.focus = true;

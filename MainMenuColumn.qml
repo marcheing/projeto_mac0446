@@ -60,13 +60,11 @@ Column {
         onTriggered: {
             if(alfabeto.focus)
             {
-                alfabeto.focus = false;
                 palavras.focus = true;
             }
             else if (palavras.focus)
             {
                 alfabeto.focus = true;
-                palavras.focus = false;
             }
             else
             {

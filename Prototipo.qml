@@ -97,5 +97,9 @@ Item {
 
     }
 
+    SweepingSpeedIndicator {
+        id: speedIndicator
+    }
+
 
 }

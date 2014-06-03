@@ -8,17 +8,10 @@ Rectangle {
     property int fontSize
     property color colorFocusUp
     property color colorFocusDown
-    property string image
 
     border.width: borderWidth
     border.color: borderColor
     width: rectText.paintedWidth + 20
-
-    Image {
-        id: buttonImage
-        source: image
-        anchors.fill: parent
-    }
 
     Text {
         id: rectText

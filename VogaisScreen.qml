@@ -182,6 +182,7 @@ Rectangle {
             fontSize: 24
             colorFocusUp: "pink"
             colorFocusDown: "red"
+
         }
     }
 
@@ -216,42 +217,34 @@ Rectangle {
             id: buttonsColumn
             y: parent.y
             spacing: 20
-            SoundButton {
+
+            ImageButton {
                 id: soundButton
-                borderWidth: 10
-                borderColor: "black"
-                colorFocusUp: "yellow"
-                colorFocusDown: "transparent"
-                rectWidth: 150
-                rectHeight: 150
+                width: 150
+                height: 150
+
+                imageOnFocus: "images/sound_focus.png"
+                imageOutOfFocus: "images/sound_no_focus.png"
             }
 
-            MenuButton {
+            ImageButton {
                 id: nextButton
                 width: 140
                 height: 80
-                radius: 100
-                borderWidth: 5
-                borderColor: "black"
-                text: "Próximo"
-                fontSize: 24
-                colorFocusUp: "pink"
-                colorFocusDown: "red"
-                image: "images/avançar.png"
+
+                imageOnFocus: "images/avancar_foco.png"
+                imageOutOfFocus: "images/avancar_sem_foco.png"
             }
 
-            MenuButton {
+            ImageButton {
                 id: previousButton
                 width: 140
                 height: 80
-                radius: 100
-                borderWidth: 5
-                borderColor: "black"
-                text: "Anterior"
-                fontSize: 24
-                colorFocusUp: "lightblue"
-                colorFocusDown: "blue"
+
+                imageOnFocus: "images/voltar_foco.png"
+                imageOutOfFocus: "images/voltar_sem_foco.png"
             }
+
         }
     }
 
@@ -263,21 +256,15 @@ Rectangle {
         onTriggered: {
             if(soundButton.focus)
             {
-                soundButton.focus = false;
                 nextButton.focus = true;
-                previousButton.focus = false;
             }
             else if (nextButton.focus)
             {
-                soundButton.focus = false;
-                nextButton.focus = false;
                 previousButton.focus = true;
             }
             else if (previousButton.focus)
             {
                 soundButton.focus = true;
-                nextButton.focus = false;
-                previousButton.focus = false;
             }
             else
             {
