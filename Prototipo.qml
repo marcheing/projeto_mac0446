@@ -33,6 +33,10 @@ Item {
                 target: vogaisScreen
                 visible: false
             }
+            PropertyChanges {
+                target: consoantesScreen
+                visible: false
+            }
         },
         State {
             name: "AlfabetoVogais"
@@ -52,14 +56,34 @@ Item {
                 target: vogaisScreen
                 visible: true
             }
+            PropertyChanges {
+                target: consoantesScreen
+                visible: false
+            }
         },
         State {
              name: "AlfabetoConsoantes"
              PropertyChanges {
                  target: titleText
-                 text: "Alfabeto\nConsoantes"
+                 text: "Alfabeto ~ Consoantes"
              }
-        }
+             PropertyChanges {
+                 target: mainMenu
+                 visible: false
+             }
+             PropertyChanges {
+                 target: alphabetMenu
+                 visible: false
+             }
+             PropertyChanges {
+                 target: vogaisScreen
+                 visible: false
+             }
+             PropertyChanges {
+                 target: consoantesScreen
+                 visible: true
+             }
+             }
 
     ]
 
@@ -91,6 +115,10 @@ Item {
 
             VogaisScreen {
                 id: vogaisScreen
+                anchors.centerIn: parent
+            }
+            ConsoantesScreen {
+                id: consoantesScreen
                 anchors.centerIn: parent
             }
         }

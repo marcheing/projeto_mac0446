@@ -14,7 +14,7 @@ Column {
         {
             if(consoantes.focus)
             {
-                root.state = "MenuAlfabeto"
+                root.state = "AlfabetoConsoantes"
             }
             else if(vogais.focus)
             {
@@ -36,7 +36,7 @@ Column {
         height: page.height / 5
         borderWidth: 5
         borderColor: "black"
-        text: "Consoantes\nB - C - K - T - Z"
+        text: "Consoantes\nB - C - G - T - Z"
         fontSize: 24
         radius: 100
         colorFocusUp: "skyblue"
