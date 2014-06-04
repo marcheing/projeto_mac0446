@@ -53,6 +53,8 @@ Rectangle {
                 else if(rootVogais.state == "vogaisU")
                     rootVogais.state = "vogaisO"
             }
+            soundButton.focus = true;
+            sweepingTime3.restart()
         }
         else if (vogaisFimColumn.visible  && event.key === Qt.Key_Return)
         {
@@ -64,27 +66,27 @@ Rectangle {
 
     SoundEffect {
         id: soundA
-        source: "sounds/a.mp3"
+        source: "sounds/a.wav"
     }
 
     SoundEffect {
         id: soundE
-        source: "sounds/e.mp3"
+        source: "sounds/e.wav"
     }
 
     SoundEffect {
         id: soundI
-        source: "sounds/i.mp3"
+        source: "sounds/i.wav"
     }
 
     SoundEffect {
         id: soundO
-        source: "sounds/o.mp3"
+        source: "sounds/o.wav"
     }
 
     SoundEffect {
         id: soundU
-        source: "sounds/u.mp3"
+        source: "sounds/u.wav"
     }
 
 

@@ -67,7 +67,7 @@ Item {
         id: page
         width: parent.width
         height: parent.height
-        color: "#4e555b"
+        color: "#C2DFFF"
         TitleText {
             id: titleText
         }
