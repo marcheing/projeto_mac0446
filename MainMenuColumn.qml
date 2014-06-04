@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtMultimedia 5.0
 import "Logic.js" as Logic
 
 Column {
@@ -20,10 +21,20 @@ Column {
             }
             else if(palavras.focus)
             {
-                root.state = "MenuPrincipal"
+                root.state = "MenuPalavras"
             }
         }
         sweepingTime.interval = root.menuSpeed;
+    }
+
+    SoundEffect {
+        id: soundLetras
+        source: "sounds/letras.wav"
+    }
+
+    SoundEffect {
+        id: soundPalavras
+        source: "sounds/palavras.wav"
     }
 
     MenuButton {
@@ -32,7 +43,7 @@ Column {
         height: page.height / 4
         borderWidth: 5
         borderColor: "black"
-        text: "Alfabeto"
+        text: "Letras"
         fontSize: 24
         radius: 100
         colorFocusUp: "skyblue"
@@ -61,14 +72,17 @@ Column {
             if(alfabeto.focus)
             {
                 palavras.focus = true;
+                soundPalavras.play()
             }
             else if (palavras.focus)
             {
                 alfabeto.focus = true;
+                soundLetras.play()
             }
             else
             {
                 alfabeto.focus = true;
+                soundLetras.play()
                 sweepingTime.interval = root.menuSpeed;
             }
         }

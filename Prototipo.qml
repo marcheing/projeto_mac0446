@@ -14,12 +14,37 @@ Item {
         },
         State {
             name: "MenuPalavras"
+            PropertyChanges {
+                target: titleText
+                text: "Palavras"
+            }
+            PropertyChanges {
+                target: mainMenu
+                visible: false
+            }
+            PropertyChanges {
+                target: alphabetMenu
+                visible: false
+            }
+            PropertyChanges {
+                target: vogaisScreen
+                visible: false
+            }
+            PropertyChanges {
+                target: consoantesScreen
+                visible: false
+            }
+            PropertyChanges {
+                target: palavrasScreen
+                visible: true
+            }
+
         },
         State {
             name: "MenuAlfabeto"
             PropertyChanges {
                 target: titleText
-                text: "Alfabeto"
+                text: "Letras"
             }
             PropertyChanges {
                 target: mainMenu
@@ -35,6 +60,10 @@ Item {
             }
             PropertyChanges {
                 target: consoantesScreen
+                visible: false
+            }
+            PropertyChanges {
+                target: palavrasScreen
                 visible: false
             }
         },
@@ -42,7 +71,7 @@ Item {
             name: "AlfabetoVogais"
             PropertyChanges {
                 target: titleText
-                text: "Alfabeto ~ Vogais"
+                text: "Letras ~ Vogais"
             }
             PropertyChanges {
                 target: mainMenu
@@ -60,12 +89,16 @@ Item {
                 target: consoantesScreen
                 visible: false
             }
+            PropertyChanges {
+                target: palavrasScreen
+                visible: false
+            }
         },
         State {
              name: "AlfabetoConsoantes"
              PropertyChanges {
                  target: titleText
-                 text: "Alfabeto ~ Consoantes"
+                 text: "Letras ~ Consoantes"
              }
              PropertyChanges {
                  target: mainMenu
@@ -82,6 +115,10 @@ Item {
              PropertyChanges {
                  target: consoantesScreen
                  visible: true
+             }
+             PropertyChanges {
+                 target: palavrasScreen
+                 visible: false
              }
              }
 
@@ -119,6 +156,10 @@ Item {
             }
             ConsoantesScreen {
                 id: consoantesScreen
+                anchors.centerIn: parent
+            }
+            PalavrasScreen {
+                id: palavrasScreen
                 anchors.centerIn: parent
             }
         }

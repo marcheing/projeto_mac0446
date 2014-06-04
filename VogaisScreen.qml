@@ -54,7 +54,10 @@ Rectangle {
                     rootVogais.state = "vogaisO"
             }
             soundButton.focus = true;
+            if (sweepingTime3.running)
+            {
             sweepingTime3.restart()
+            }
         }
         else if (vogaisFimColumn.visible  && event.key === Qt.Key_Return)
         {
@@ -183,7 +186,7 @@ Rectangle {
             radius: 100
             borderWidth: 5
             borderColor: "black"
-            text: "Menu Principal"
+            text: "Menu Letras"
             fontSize: 24
             colorFocusUp: "pink"
             colorFocusDown: "red"

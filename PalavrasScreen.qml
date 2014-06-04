@@ -3,160 +3,160 @@ import QtMultimedia 5.0
 import "Logic.js" as Logic
 
 Rectangle {
-    id: rootConsoantes
+    id: rootPalavras
     width: root.width
     height: root.height - 30
     color: parent.color
     anchors.centerIn: parent
     visible: false
-    state: "consoantesB"
+    state: "Palavras1"
 
     Keys.onPressed: {
         if(event.key === Qt.Key_Escape)
             Qt.quit()
-        Logic.manage_speed(event, sweepingTime4);
+        Logic.manage_speed(event, sweepingTime5);
         if(row.visible && event.key === Qt.Key_Return)
         {
             var soundMap = {}
-            soundMap['B'] = soundB
-            soundMap['C'] = soundC
-            soundMap['G'] = soundG
-            soundMap['T'] = soundT
-            soundMap['Z'] = soundZ
+            soundMap['1'] = sound1
+            soundMap['2'] = sound2
+            soundMap['3'] = sound3
+            soundMap['4'] = sound4
+            soundMap['5'] = sound5
             if(soundButton.focus)
             {
-                soundMap[consoante.text].play()
+                soundMap[palavra.text].play()
             }
             else if (nextButton.focus)
             {
-                if(rootConsoantes.state == "consoantesB")
-                    rootConsoantes.state = "consoantesC"
-                else if(rootConsoantes.state == "consoantesC")
-                    rootConsoantes.state = "consoantesG"
-                else if(rootConsoantes.state == "consoantesG")
-                    rootConsoantes.state = "consoantesT"
-                else if(rootConsoantes.state == "consoantesT")
-                    rootConsoantes.state = "consoantesZ"
-                else if(rootConsoantes.state == "consoantesZ")
-                    rootConsoantes.state = "consoantesFim"
+                if(rootPalavras.state == "Palavras1")
+                    rootPalavras.state = "Palavras2"
+                else if(rootPalavras.state == "Palavras2")
+                    rootPalavras.state = "Palavras3"
+                else if(rootPalavras.state == "Palavras3")
+                    rootPalavras.state = "Palavras4"
+                else if(rootPalavras.state == "Palavras4")
+                    rootPalavras.state = "Palavras5"
+                else if(rootPalavras.state == "Palavras5")
+                    rootPalavras.state = "PalavrasFim"
             }
             else
             {
-                if(rootConsoantes.state == "consoantesB")
-                    root.state = "MenuAlfabeto"
-                else if (rootConsoantes.state == "consoantesC")
-                    rootConsoantes.state = "consoantesB"
-                else if(rootConsoantes.state == "consoantesG")
-                    rootConsoantes.state = "consoantesC"
-                else if(rootConsoantes.state == "consoantesT")
-                    rootConsoantes.state = "consoantesG"
-                else if(rootConsoantes.state == "consoantesZ")
-                    rootConsoantes.state = "consoantesT"
+                if(rootPalavras.state == "Palavras1")
+                    root.state = "MenuPrincipal"
+                else if (rootPalavras.state == "Palavras2")
+                    rootPalavras.state = "Palavras1"
+                else if(rootPalavras.state == "Palavras3")
+                    rootPalavras.state = "Palavras2"
+                else if(rootPalavras.state == "Palavras4")
+                    rootPalavras.state = "Palavras3"
+                else if(rootPalavras.state == "Palavras5")
+                    rootPalavras.state = "Palavras4"
             }
             soundButton.focus = true;
-            if (sweepingTime4.running)
+            if (sweepingTime5.running)
             {
-            sweepingTime4.restart()
+            sweepingTime5.restart()
             }
         }
-        else if (consoantesFimColumn.visible  && event.key === Qt.Key_Return)
+        else if (palavrasFimColumn.visible  && event.key === Qt.Key_Return)
         {
-            root.state = "MenuAlfabeto"
-            rootConsoantes.state = "consoantesB"
+            root.state = "MenuPrincipal"
+            rootPalavras.state = "Palavras1"
         }
-        sweepingTime4.interval = root.menuSpeed;
-    }
-
-    SoundEffect{
-        id: soundB
-        source: "sounds/b.wav"
-    }
-
-    SoundEffect{
-        id: soundC
-        source: "sounds/c.wav"
+        sweepingTime5.interval = root.menuSpeed;
     }
 
     SoundEffect {
-        id: soundG
-        source: "sounds/g.wav"
+        id: sound1
+        source: "sounds/1.wav"
     }
 
     SoundEffect {
-        id: soundT
-        source: "sounds/t.wav"
+        id: sound2
+        source: "sounds/2.wav"
     }
 
     SoundEffect {
-        id: soundZ
-        source: "sounds/z.wav"
+        id: sound3
+        source: "sounds/3.wav"
+    }
+
+    SoundEffect {
+        id: sound4
+        source: "sounds/4.wav"
+    }
+
+    SoundEffect {
+        id: sound5
+        source: "sounds/5.wav"
     }
 
 
     states: [
         State {
-            name: "consoantesB"
+            name: "Palavras1"
             PropertyChanges {
-                target: consoante
-                text: "B"
+                target: palavra
+                text: "Galo"
             }
             PropertyChanges {
-                target: consoanteImagem
-                source: "images/bola.png"
-            }
-        },
-        State {
-            name: "consoantesC"
-            PropertyChanges {
-                target: consoante
-                text: "C"
-            }
-            PropertyChanges {
-                target: consoanteImagem
-                source: "images/cachorro.png"
+                target: palavraImagem
+                source: "images/galo.png"
             }
         },
         State {
-            name: "consoantesG"
+            name: "Palavras2"
             PropertyChanges {
-                target: consoante
-                text: "G"
+                target: palavra
+                text: "Flor"
             }
             PropertyChanges {
-                target: consoanteImagem
-                source: "images/gato.png"
-            }
-        },
-        State {
-            name: "consoantesT"
-            PropertyChanges {
-                target: consoante
-                text: "T"
-            }
-            PropertyChanges {
-                target: consoanteImagem
-                source: "images/tartaruga.png"
+                target: palavraImagem
+                source: "images/flor.png"
             }
         },
         State {
-            name: "consoantesZ"
+            name: "Palavras3"
             PropertyChanges {
-                target: consoante
-                text: "Z"
+                target: palavra
+                text: "Peixe"
             }
             PropertyChanges {
-                target: consoanteImagem
-                source: "images/zebra.png"
+                target: palavraImagem
+                source: "images/peixe.png"
             }
         },
         State {
-            name: "consoantesFim"
+            name: "Palavras4"
+            PropertyChanges {
+                target: palavra
+                text: "Lua"
+            }
+            PropertyChanges {
+                target: palavraImagem
+                source: "images/lua.png"
+            }
+        },
+        State {
+            name: "Palavras5"
+            PropertyChanges {
+                target: palavra
+                text: "Maçã"
+            }
+            PropertyChanges {
+                target: palavraImagem
+                source: "images/maça.png"
+            }
+        },
+        State {
+            name: "PalavrasFim"
             PropertyChanges {
                 target: row
                 visible: false
             }
             PropertyChanges {
-                target: consoantesFimColumn
+                target: palavrasFimColumn
                 visible: true
             }
             PropertyChanges {
@@ -167,14 +167,14 @@ Rectangle {
     ]
 
     Column {
-        id: consoantesFimColumn
+        id: palavrasFimColumn
         visible: false
         spacing: 40
         anchors.centerIn: parent
 
         Text {
-            id: consoantesFimTextoPrincipal
-            text: "Fim\ndas\nConsoantes"
+            id: palavrasFimTextoPrincipal
+            text: "Fim\ndas\nPalavras"
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: 56
@@ -186,7 +186,7 @@ Rectangle {
             radius: 100
             borderWidth: 5
             borderColor: "black"
-            text: "Menu Letras"
+            text: "Menu Principal"
             fontSize: 24
             colorFocusUp: "pink"
             colorFocusDown: "red"
@@ -200,12 +200,12 @@ Rectangle {
         spacing: parent.width / 5
 
         Column {
-            id: consoantesColumn
+            id: palavrasColumn
             y: parent.y
             spacing: 20
 
             BorderImage {
-                id: consoanteImagem
+                id: palavraImagem
                 width: 250
                 height: 200
                 horizontalTileMode: BorderImage.Stretch
@@ -213,9 +213,9 @@ Rectangle {
             }
 
             Text {
-                id: consoante
+                id: palavra
                 font.pointSize: 96
-                x: consoanteImagem.x + consoanteImagem.width / 2 - width / 2
+                x: palavraImagem.x + palavraImagem.width / 2 - width / 2
             }
 
         }
@@ -257,8 +257,8 @@ Rectangle {
     }
 
     Timer {
-        id: sweepingTime4
-        running: rootConsoantes.visible && row.visible
+        id: sweepingTime5
+        running: rootPalavras.visible && row.visible
         repeat: true
         interval: 1
         onTriggered: {
@@ -277,7 +277,7 @@ Rectangle {
             else
             {
                 soundButton.focus = true;
-                sweepingTime4.interval = root.menuSpeed
+                sweepingTime5.interval = root.menuSpeed
             }
         }
     }

@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtMultimedia 5.0
 import "Logic.js" as Logic
 
 Column {
@@ -24,11 +25,15 @@ Column {
             {
                 root.state = "MenuPrincipal"
             }
-            sweepingTime2.interval = 1
-            sweepingTime2.restart
-        }
+//            sweepingTime2.interval = 1
+            if (sweepingTime2.running)
+            {
+            sweepingTime2.restart()
+            }
         sweepingTime2.interval = root.menuSpeed;
     }
+    }
+
 
     MenuButton {
         id: consoantes
@@ -65,6 +70,17 @@ Column {
         imageOutOfFocus: "images/voltar_sem_foco.png"
     }
 
+    SoundEffect {
+        id: soundVogais
+        source: "sounds/vogais.wav"
+    }
+
+    SoundEffect {
+        id: soundConsoantes
+        source: "sounds/consoantes.wav"
+    }
+
+
     Timer {
         id: sweepingTime2
         running: alfabetoColumn.visible
@@ -74,6 +90,7 @@ Column {
             if(consoantes.focus)
             {
                 vogais.focus = true;
+                soundVogais.play()
             }
             else if (vogais.focus)
             {
@@ -82,9 +99,11 @@ Column {
             else if (voltar.focus)
             {
                 consoantes.focus = true;
+                soundConsoantes.play()
             }
             else {
                 consoantes.focus = true;
+                soundConsoantes.play()
                 sweepingTime2.interval = root.menuSpeed
             }
         }
