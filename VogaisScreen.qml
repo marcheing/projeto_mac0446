@@ -64,27 +64,27 @@ Rectangle {
 
     SoundEffect {
         id: soundA
-        source: "sounds/a.wav"
+        source: "sounds/a.mp3"
     }
 
     SoundEffect {
         id: soundE
-        source: "sounds/e.wav"
+        source: "sounds/e.mp3"
     }
 
     SoundEffect {
         id: soundI
-        source: "sounds/i.wav"
+        source: "sounds/i.mp3"
     }
 
     SoundEffect {
         id: soundO
-        source: "sounds/o.wav"
+        source: "sounds/o.mp3"
     }
 
     SoundEffect {
         id: soundU
-        source: "sounds/u.wav"
+        source: "sounds/u.mp3"
     }
 
 

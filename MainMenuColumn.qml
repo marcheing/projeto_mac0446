@@ -22,14 +22,18 @@ Column {
             {
                 root.state = "MenuPrincipal"
             }
+            else if(sair.focus)
+            {
+                Qt.quit()
+            }
         }
         sweepingTime.interval = root.menuSpeed;
     }
 
     MenuButton {
         id: alfabeto
-        width: page.width / 2
-        height: page.height / 4
+        width: page.width / 3
+        height: page.height / 5
         borderWidth: 5
         borderColor: "black"
         text: "Alfabeto"
@@ -41,8 +45,8 @@ Column {
 
     MenuButton {
         id: palavras
-        width: page.width / 2
-        height: page.height / 4
+        width: page.width / 3
+        height: page.height / 5
         radius: 100
         borderWidth: 5
         borderColor: "black"
@@ -50,6 +54,19 @@ Column {
         fontSize: 24
         colorFocusUp: "pink"
         colorFocusDown: "red"
+    }
+
+    MenuButton {
+        id: sair
+        width: page.width / 3
+        height: page.height / 5
+        radius: 100
+        borderWidth: 5
+        borderColor: "black"
+        text: "Sair"
+        fontSize: 24
+        colorFocusUp: "lightgreen"
+        colorFocusDown: "green"
     }
 
     Timer {
@@ -63,6 +80,10 @@ Column {
                 palavras.focus = true;
             }
             else if (palavras.focus)
+            {
+                sair.focus = true;
+            }
+            else if (sair.focus)
             {
                 alfabeto.focus = true;
             }
